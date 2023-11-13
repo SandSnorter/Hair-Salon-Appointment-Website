@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YourSalon | Offers</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', sans-serif;
+      text-decoration: none;
+    }
+    :root{
+      --orange:#ffa500;
+    }
+    body{
+      
+      background:rgba(0,0,0,.3);
+    }
+    .return{
+      background-color: #ffa500;
+      font-weight: 700;
+      font-size: 2rem;
+      padding: 20px;
+      color: rgba(255, 255, 255, 0.856);
+    }
+    .return a{
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .return a:hover{
+      color: white;
+    }
+    #content{
+      min-height: 80vh;
+      width:100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #offer_sheet{
+      text-align: center;
+      box-shadow: 0 1rem 2rem rgba(0,0,0,.4);
+    }
+    #offer_sheet thead tr{
+      font-weight: 600;
+      font-size: 1.5em;
+      color: #FFFFFF;
+      background-color: var(--orange);
+    }
+    #offer_sheet tbody{
+      background-color: white;
+    }
+    #offer_sheet tbody tr td{
+      padding: 6px 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="return"><a href="homepage.html">&larr; Return to homepage</a></div>
+  <div id='content' align="center">
+    <table id='offer_sheet'>
+        <thead>
+            <tr>
+                <td>Date</td>
+                <td>Offer</td>
+            </tr>                
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+  </div>
+  <script>
+    let xmlContent = '';
+    let tableEvents = document.getElementById('offer_sheet');
+    fetch('list.xml').then((response)=> {
+        response.text().then((xml)=>{
+            xmlContent = xml;
+
+            let parser = new DOMParser();
+            let xmlDOM = parser.parseFromString(xmlContent, 'application/xml');
+            let events = xmlDOM.querySelectorAll('offer');
+
+            events.forEach(eventXmlNode => {
+
+                let row = document.createElement('tr');
+
+                let td = document.createElement('td');
+                td.innerText = eventXmlNode.children[0 ].innerHTML;
+                row.appendChild(td);
+
+                td = document.createElement('td');
+                td.innerText = eventXmlNode.children[1].innerHTML;
+                row.appendChild(td);
+
+                tableEvents.children[1].appendChild(row);
+                
+            });
+        });
+    });
+  </script>
+</body>
+</html>

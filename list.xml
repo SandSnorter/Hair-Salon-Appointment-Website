@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<offer_sheet> 
+    <offer> 
+        <duration>4th - 8th July</duration>
+        <discount>25%</discount>
+
+    </offer>
+    <offer> 
+        <duration>12th - 20th July</duration>
+        <discount>15%</discount>
+
+    </offer>
+    <offer> 
+        <duration>1st - 4th August</duration>
+        <discount>10%</discount>
+
+    </offer>
+    <offer> 
+        <duration>13th - 16th August</duration>
+        <discount>30%(Valid in India)</discount>
+
+    </offer>
+    <offer> 
+        <duration>10th - 17th September</duration>
+        <discount>20%</discount>
+
+    </offer>
+</offer_sheet>
